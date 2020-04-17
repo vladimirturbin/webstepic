@@ -1,4 +1,4 @@
-def hello(env, start_response):
+def application(env, start_response):
     query = env['QUERY_STRING']
     ret = bytes('\n'.join(query.split('&')), 'UTF8') + b'\n'
     print('1')
