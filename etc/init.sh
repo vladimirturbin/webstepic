@@ -1,3 +1,7 @@
+#!/bin/bash
+set -euo pipefail
+IFS=$'\n\t'
+
 sudo rm /etc/nginx/conf.d/*.conf
 sudo rm /etc/nginx/sites-enabled/default
 sudo ln -s /home/box/web/etc/nginx.conf /etc/nginx/conf.d/nginx.conf
@@ -7,18 +11,18 @@ sudo rm /etc/gunicorn.d/django.example
 # sudo ln -s /home/box/web/etc/gunicorn.conf /etc/gunicorn.d/test
 # sudo /etc/init.d/gunicorn restart
 
-sudo apt-get update
-sudo apt-get upgrade -y
 
-sudo apt-get install -y python3.5
+sudo add-apt-repository ppa:deadsnakes/ppa -Y
+sudo apt-get update 
+sudo apt-get upgrade -Y
+sudo apt-get install python3.6-dev python3.6-venv -Y
 
-sudo apt-get install -y python3.5-dev
+python3.6 -m venv ~/myvenv
+source ~/myvenv/bin/activate
 
-sudo unlink /usr/bin/python3
-
-sudo ln -s /usr/bin/python3.5 /usr/bin/python3
-
-
+pip3 install -U pip
+pip3 install -U setuptools
+pip3 install django
 
 # gunicorn --bind=0.0.0.0:8080 --workers=3 hello:application &
 
