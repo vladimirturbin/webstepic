@@ -7,6 +7,19 @@ sudo rm /etc/gunicorn.d/django.example
 # sudo ln -s /home/box/web/etc/gunicorn.conf /etc/gunicorn.d/test
 # sudo /etc/init.d/gunicorn restart
 
-gunicorn --bind=0.0.0.0:8080 --workers=3 hello:application &
+sudo apt-get update
+sudo apt-get upgrade -y
 
-sudo service nginx restart
+sudo apt-get install -y python3.5
+
+sudo apt-get install -y python3.5-dev
+
+sudo unlink /usr/bin/python3
+
+sudo ln -s /usr/bin/python3.5 /usr/bin/python3
+
+
+
+# gunicorn --bind=0.0.0.0:8080 --workers=3 hello:application &
+
+# sudo service nginx restart
