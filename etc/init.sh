@@ -24,10 +24,10 @@ sudo apt-get install python3.6-dev python3.6-venv -y
 python3.6 -m venv ~/myvenv
 source ~/myvenv/bin/activate
 
-pip3 install --timeout 120 -U pip
-pip3 install --timeout 120 -U setuptools
-pip3 install --timeout 120 django gunicorn
+pip3 install --timeout 120 -U pip setuptools
+pip3 install --timeout 120 django==2.1 gunicorn
 
 gunicorn --bind=0.0.0.0:8080 --chdir ~/web/ --workers=3 hello:application &
+gunicorn --bind=0.0.0.0:8000 --chdor ~/web/ask/ --workers=3 ask.wsgi &
 
 sudo service nginx restart
