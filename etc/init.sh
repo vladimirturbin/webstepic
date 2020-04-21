@@ -28,6 +28,6 @@ pip3 install --timeout 120 -U pip setuptools
 pip3 install --timeout 120 django==2.1 gunicorn
 
 gunicorn --bind=0.0.0.0:8080 --chdir ~/web/ --workers=3 hello:application &
-gunicorn --bind=0.0.0.0:8000 --chdor ~/web/ask/ --workers=3 ask.wsgi &
+gunicorn --bind=0.0.0.0:8000 --chdir ~/web/ask/ --workers=3 ask.wsgi &
 
 sudo service nginx restart
