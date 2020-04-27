@@ -34,7 +34,7 @@ python3.6 -m venv ~/myvenv
 source ~/myvenv/bin/activate
 
 pip3 install --timeout 120 -U pip setuptools
-pip3 install --timeout 120 django==2.1 gunicorn mysqlclient
+pip3 install --timeout 120 django gunicorn mysqlclient
 
 gunicorn --bind=0.0.0.0:8080 --chdir ~/web/ --workers=3 hello:application &
 gunicorn --bind=0.0.0.0:8000 --chdir ~/web/ask/ --workers=3 ask.wsgi &
