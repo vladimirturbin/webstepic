@@ -16,6 +16,13 @@ sudo rm -f /etc/gunicorn.d/django.example
 # sudo ln -sf ~/web/etc/gunicorn.conf /etc/gunicorn.d/test
 # sudo /etc/init.d/gunicorn stop
 
+sudo apt install mysql-server-5.5 -y
+sudo apt install libmysqlclient-dev -y
+
+mysql -u root -p -e "GRANT ALL PRIVILEGES ON *.* TO 'sa'@'localhost' IDENTIFIED BY 'ok';"
+mysql -u sa -pok -e "CREATE DATABASE askdb;"
+mysql -u sa -pok askdb << ~\web\etc\dump.txt
+
 sudo add-apt-repository ppa:deadsnakes/ppa -y
 sudo apt-get update 
 # sudo apt-get upgrade -y
