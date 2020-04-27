@@ -23,7 +23,7 @@ set -e
 
 mysql -u root -pok -e "GRANT ALL PRIVILEGES ON *.* TO 'sa'@'localhost' IDENTIFIED BY 'ok';"
 mysql -u sa -pok -e "CREATE DATABASE askdb;"
-mysql -u sa -pok askdb < ~\web\etc\dump.txt 
+mysql -u sa -pok askdb < ~/web/etc/dump.txt 
 
 sudo add-apt-repository ppa:deadsnakes/ppa -y
 sudo apt-get update 
