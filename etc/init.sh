@@ -5,8 +5,8 @@ IFS=$'\n\t'
 # This init script is for installing and starting my web project from stepik 
 # web programming course on elder (ubuntu 14/04) OS
 
-echo "mysql-server-5.5 mysql-server/root_password password root ok" | sudo debconf-set-selections
-echo "mysql-server-5.5 mysql-server/root_password_again password root ok" | sudo debconf-set-selections
+echo "mysql-server-5.5 mysql-server/root_password password ok" | sudo debconf-set-selections
+echo "mysql-server-5.5 mysql-server/root_password_again password ok" | sudo debconf-set-selections
 
 sudo apt-get install nginx mysql-server-5.5 libmysqlclient-dev -y
 
