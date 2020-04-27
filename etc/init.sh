@@ -17,11 +17,13 @@ sudo ln -sf ~/web/etc/nginx.conf /etc/nginx/conf.d/nginx.conf
 sudo rm -f /etc/gunicorn.d/wsgi.example
 sudo rm -f /etc/gunicorn.d/django.example
 
-sh changemysqlrootpasswordtook.sh
+set +e
+mysql -u root -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('ok');"
+set -e
 
 mysql -u root -pok -e "GRANT ALL PRIVILEGES ON *.* TO 'sa'@'localhost' IDENTIFIED BY 'ok';"
 mysql -u sa -pok -e "CREATE DATABASE askdb;"
-mysql -u sa -pok askdb << ~\web\etc\dump.txt 
+mysql -u sa -pok askdb < ~\web\etc\dump.txt 
 
 sudo add-apt-repository ppa:deadsnakes/ppa -y
 sudo apt-get update 
