@@ -1,1 +1,2 @@
-mysqldump -u sa -p askdb > ~/web/etc/dump.txt
+mysqldump -u sa -pok askdb > ~/web/etc/dump.txt
+

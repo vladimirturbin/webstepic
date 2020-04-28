@@ -256,7 +256,7 @@ CREATE TABLE `django_migrations` (
   `name` varchar(255) NOT NULL,
   `applied` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -265,7 +265,7 @@ CREATE TABLE `django_migrations` (
 
 LOCK TABLES `django_migrations` WRITE;
 /*!40000 ALTER TABLE `django_migrations` DISABLE KEYS */;
-INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2020-04-28 13:19:46.310027'),(2,'auth','0001_initial','2020-04-28 13:19:46.410096'),(3,'admin','0001_initial','2020-04-28 13:19:46.578799'),(4,'admin','0002_logentry_remove_auto_add','2020-04-28 13:19:46.633367'),(5,'admin','0003_logentry_add_action_flag_choices','2020-04-28 13:19:46.662068'),(6,'contenttypes','0002_remove_content_type_name','2020-04-28 13:19:46.739501'),(7,'auth','0002_alter_permission_name_max_length','2020-04-28 13:19:46.772673'),(8,'auth','0003_alter_user_email_max_length','2020-04-28 13:19:46.813153'),(9,'auth','0004_alter_user_username_opts','2020-04-28 13:19:46.840828'),(10,'auth','0005_alter_user_last_login_null','2020-04-28 13:19:46.881316'),(11,'auth','0006_require_contenttypes_0002','2020-04-28 13:19:46.884803'),(12,'auth','0007_alter_validators_add_error_messages','2020-04-28 13:19:46.915524'),(13,'auth','0008_alter_user_username_max_length','2020-04-28 13:19:46.954271'),(14,'auth','0009_alter_user_last_name_max_length','2020-04-28 13:19:46.997889'),(15,'auth','0010_alter_group_name_max_length','2020-04-28 13:19:47.044767'),(16,'auth','0011_update_proxy_permissions','2020-04-28 13:19:47.070824'),(17,'qa','0001_initial','2020-04-28 13:19:47.154852'),(18,'sessions','0001_initial','2020-04-28 13:19:47.238678');
+INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2020-04-28 13:19:46.310027'),(2,'auth','0001_initial','2020-04-28 13:19:46.410096'),(3,'admin','0001_initial','2020-04-28 13:19:46.578799'),(4,'admin','0002_logentry_remove_auto_add','2020-04-28 13:19:46.633367'),(5,'admin','0003_logentry_add_action_flag_choices','2020-04-28 13:19:46.662068'),(6,'contenttypes','0002_remove_content_type_name','2020-04-28 13:19:46.739501'),(7,'auth','0002_alter_permission_name_max_length','2020-04-28 13:19:46.772673'),(8,'auth','0003_alter_user_email_max_length','2020-04-28 13:19:46.813153'),(9,'auth','0004_alter_user_username_opts','2020-04-28 13:19:46.840828'),(10,'auth','0005_alter_user_last_login_null','2020-04-28 13:19:46.881316'),(11,'auth','0006_require_contenttypes_0002','2020-04-28 13:19:46.884803'),(12,'auth','0007_alter_validators_add_error_messages','2020-04-28 13:19:46.915524'),(13,'auth','0008_alter_user_username_max_length','2020-04-28 13:19:46.954271'),(14,'auth','0009_alter_user_last_name_max_length','2020-04-28 13:19:46.997889'),(15,'auth','0010_alter_group_name_max_length','2020-04-28 13:19:47.044767'),(16,'auth','0011_update_proxy_permissions','2020-04-28 13:19:47.070824'),(17,'qa','0001_initial','2020-04-28 13:19:47.154852'),(18,'sessions','0001_initial','2020-04-28 13:19:47.238678'),(19,'qa','0002_auto_20200428_1354','2020-04-28 13:54:51.229284');
 /*!40000 ALTER TABLE `django_migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -308,8 +308,8 @@ CREATE TABLE `qa_answer` (
   `author_id` int(11) NOT NULL,
   `question_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `qa_answer_author_id_fdca825d_fk_auth_user_id` (`author_id`),
   KEY `qa_answer_question_id_afdc507a_fk_qa_question_id` (`question_id`),
+  KEY `qa_answer_author_id_fdca825d_fk_auth_user_id` (`author_id`),
   CONSTRAINT `qa_answer_author_id_fdca825d_fk_auth_user_id` FOREIGN KEY (`author_id`) REFERENCES `auth_user` (`id`),
   CONSTRAINT `qa_answer_question_id_afdc507a_fk_qa_question_id` FOREIGN KEY (`question_id`) REFERENCES `qa_question` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -390,4 +390,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-04-28 13:33:51
+-- Dump completed on 2020-04-28 13:55:01
