@@ -18,6 +18,7 @@ sudo rm -f /etc/gunicorn.d/wsgi.example
 sudo rm -f /etc/gunicorn.d/django.example
 
 set +e
+sudo service mysql start
 mysql -u root -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('ok');"
 set -e
 
