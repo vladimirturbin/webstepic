@@ -42,6 +42,6 @@ pip3 install --timeout 120 django gunicorn mysqlclient
 #gunicorn --bind=0.0.0.0:8080 --chdir ~/web/ --workers=3 hello:application &
 #gunicorn --bind=0.0.0.0:8000 --chdir ~/web/ask/ --workers=3 ask.wsgi &
 
-mysql -u root -pok SET PASSWORD FOR 'root'@'localhost' = PASSWORD('');"
+mysql -u root -pok -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('');"
 
 sudo service nginx restart
