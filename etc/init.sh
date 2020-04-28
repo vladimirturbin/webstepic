@@ -8,7 +8,10 @@ IFS=$'\n\t'
 echo "mysql-server-5.6 mysql-server/root_password password ok" | sudo debconf-set-selections
 echo "mysql-server-5.6 mysql-server/root_password_again password ok" | sudo debconf-set-selections
 
-sudo apt-get install nginx mysql-server-5.6 libmysqlclient-dev -y
+sudo apt-get update
+sudo apt install nginx mysql-server-5.6 libmysqlclient-dev -y
+
+sudo service mysql start
 
 sudo rm -f /etc/nginx/conf.d/*.conf
 sudo rm -f /etc/nginx/sites-enabled/default
