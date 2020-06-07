@@ -31,13 +31,13 @@ mysql -u sa -pzR8adKkCy22ANKW5. askdb < ~/web/etc/dump.txt
 sudo add-apt-repository ppa:deadsnakes/ppa -y
 sudo apt-get update 
 # sudo apt-get upgrade -y
-sudo apt-get install python3.7-dev python3.7-venv -y
+sudo apt-get install python3.6-dev python3.6-venv -y
 
-python3.7 -m venv ~/myvenv
+python3.6 -m venv ~/myvenv
 source ~/myvenv/bin/activate
 
 pip3 install --timeout 120 -U pip setuptools
-pip3 install --timeout 120 django gunicorn mysqlclient
+pip3 install --timeout 120 wheel django gunicorn mysqlclient
 
 #gunicorn --bind=0.0.0.0:8080 --chdir ~/web/ --workers=3 hello:application &
 gunicorn --bind=0.0.0.0:8000 --chdir ~/web/ask/ --workers=3 ask.wsgi &
