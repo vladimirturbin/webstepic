@@ -16,10 +16,11 @@ class IndexView(View):
         except TypeError:
             limit = 1
 
-        # paginator = Paginator(QuestionManager.new(Question.objects), limit)
-        paginator = Paginator(Question.objects.all(), limit)
+        paginator = Paginator((Question.objects.new()), limit)
+        # paginator = Paginator(Question.objects.all(), limit)
         paginator.baseurl = '/?page='
         page = paginator.page(page)
+
         print()
         return render(request, 'templates/main.html',
                       {
