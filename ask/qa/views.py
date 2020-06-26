@@ -2,8 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views import View
 from django.core.paginator import Paginator
+from django.shortcuts import get_object_or_404
 
-from .models import QuestionManager, Question
+from .models import QuestionManager, Question, Answer
+
 
 class IndexView(View):
     def get(self, request, *args, **kwargs):
@@ -21,7 +23,6 @@ class IndexView(View):
         paginator.baseurl = '/?page='
         page = paginator.page(page)
 
-        print()
         return render(request, 'templates/main.html',
                       {
                           'questions': page.object_list,
@@ -30,4 +31,10 @@ class IndexView(View):
                       })
 
 
-        # return HttpResponse(page)
+class QuestionView(View):
+    def get(self, request, question_number, *args, **kwargs):
+        question = get_object_or_404(Question, id=question_number)
+        answers = Answer.objects.filter(question=question)
+        return render(request, 'templates/question.html',
+                      {'question': question,
+                       'answers': answers})
