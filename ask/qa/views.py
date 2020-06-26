@@ -4,7 +4,7 @@ from django.views import View
 from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404
 
-from .models import QuestionManager, Question, Answer
+from .models import Question, Answer
 
 
 class IndexView(View):
@@ -16,7 +16,7 @@ class IndexView(View):
         try:
             limit = int(request.GET.get('limit', 10))
         except TypeError:
-            limit = 1
+            limit = 10
 
         paginator = Paginator((Question.objects.new()), limit)
         # paginator = Paginator(Question.objects.all(), limit)
@@ -38,3 +38,27 @@ class QuestionView(View):
         return render(request, 'templates/question.html',
                       {'question': question,
                        'answers': answers})
+
+
+class PopularView(View):
+    def get(self, request, *args, **kwargs):
+        try:
+            page = int(request.GET.get('page', 1))
+        except TypeError:
+            page = 1
+        try:
+            limit = int(request.GET.get('limit', 10))
+        except TypeError:
+            limit = 10
+
+        paginator = Paginator((Question.objects.popular()), limit)
+        # paginator = Paginator(Question.objects.all(), limit)
+        paginator.baseurl = '/?page='
+        page = paginator.page(page)
+
+        return render(request, 'templates/main.html',
+                      {
+                          'questions': page.object_list,
+                          'paginator': paginator,
+                          'page': page,
+                      })
