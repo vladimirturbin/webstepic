@@ -206,7 +206,7 @@ CREATE TABLE `django_admin_log` (
   KEY `django_admin_log_user_id_c564eba6_fk_auth_user_id` (`user_id`),
   CONSTRAINT `django_admin_log_content_type_id_c4bce8eb_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
   CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -215,7 +215,7 @@ CREATE TABLE `django_admin_log` (
 
 LOCK TABLES `django_admin_log` WRITE;
 /*!40000 ALTER TABLE `django_admin_log` DISABLE KEYS */;
-INSERT INTO `django_admin_log` VALUES (1,'2020-06-26 07:24:50.766156','1','Answer object (1)',1,'[{\"added\": {}}]',8,1);
+INSERT INTO `django_admin_log` VALUES (1,'2020-06-26 07:24:50.766156','1','Answer object (1)',1,'[{\"added\": {}}]',8,1),(2,'2020-06-26 15:41:32.693882','20','Question object (20)',2,'[{\"changed\": {\"fields\": [\"Added at\"]}}]',7,1),(3,'2020-06-26 15:41:44.549863','19','Question object (19)',2,'[{\"changed\": {\"fields\": [\"Added at\"]}}]',7,1),(4,'2020-06-26 15:41:55.633569','18','Question object (18)',2,'[{\"changed\": {\"fields\": [\"Added at\"]}}]',7,1),(5,'2020-06-26 15:42:07.286113','17','Question object (17)',2,'[{\"changed\": {\"fields\": [\"Added at\"]}}]',7,1),(6,'2020-06-26 15:42:19.565337','16','Question object (16)',2,'[{\"changed\": {\"fields\": [\"Added at\"]}}]',7,1),(7,'2020-06-26 15:42:42.336664','15','Question object (15)',2,'[{\"changed\": {\"fields\": [\"Added at\"]}}]',7,1),(8,'2020-06-26 15:42:59.068532','14','Question object (14)',2,'[{\"changed\": {\"fields\": [\"Added at\"]}}]',7,1),(9,'2020-06-26 15:43:10.622178','20','Question object (20)',2,'[{\"changed\": {\"fields\": [\"Rating\"]}}]',7,1),(10,'2020-06-26 15:43:25.109033','19','Question object (19)',2,'[{\"changed\": {\"fields\": [\"Rating\"]}}]',7,1),(11,'2020-06-26 15:43:30.597265','20','Question object (20)',2,'[]',7,1),(12,'2020-06-26 15:43:37.318896','19','Question object (19)',2,'[]',7,1),(13,'2020-06-26 15:43:45.196816','18','Question object (18)',2,'[{\"changed\": {\"fields\": [\"Rating\"]}}]',7,1),(14,'2020-06-26 15:43:53.552432','17','Question object (17)',2,'[{\"changed\": {\"fields\": [\"Rating\"]}}]',7,1),(15,'2020-06-26 15:44:01.823864','16','Question object (16)',2,'[{\"changed\": {\"fields\": [\"Rating\"]}}]',7,1),(16,'2020-06-26 15:44:12.722906','15','Question object (15)',2,'[{\"changed\": {\"fields\": [\"Rating\"]}}]',7,1),(17,'2020-06-26 15:44:24.585474','14','Question object (14)',2,'[{\"changed\": {\"fields\": [\"Rating\"]}}]',7,1),(18,'2020-06-26 15:44:43.189823','13','Question object (13)',2,'[{\"changed\": {\"fields\": [\"Added at\", \"Rating\"]}}]',7,1),(19,'2020-06-26 15:45:18.547281','12','Question object (12)',2,'[{\"changed\": {\"fields\": [\"Added at\", \"Rating\"]}}]',7,1),(20,'2020-06-26 15:45:40.167148','11','Question object (11)',2,'[{\"changed\": {\"fields\": [\"Added at\", \"Rating\"]}}]',7,1),(21,'2020-06-26 15:46:18.074744','10','Question object (10)',2,'[{\"changed\": {\"fields\": [\"Added at\", \"Rating\"]}}]',7,1),(22,'2020-06-26 15:46:48.341088','9','Question object (9)',2,'[{\"changed\": {\"fields\": [\"Added at\", \"Rating\"]}}]',7,1),(23,'2020-06-26 15:47:11.774460','8','Question object (8)',2,'[{\"changed\": {\"fields\": [\"Added at\", \"Rating\"]}}]',7,1),(24,'2020-06-26 15:49:23.904890','7','Question object (7)',2,'[{\"changed\": {\"fields\": [\"Added at\", \"Rating\"]}}]',7,1),(25,'2020-06-26 15:49:38.643485','6','Question object (6)',2,'[{\"changed\": {\"fields\": [\"Added at\", \"Rating\"]}}]',7,1),(26,'2020-06-26 15:49:54.208813','5','Question object (5)',2,'[{\"changed\": {\"fields\": [\"Added at\", \"Rating\"]}}]',7,1),(27,'2020-06-26 15:50:24.368804','3','Question object (3)',2,'[{\"changed\": {\"fields\": [\"Added at\", \"Rating\"]}}]',7,1),(28,'2020-06-26 15:50:40.663463','2','Question object (2)',2,'[{\"changed\": {\"fields\": [\"Added at\", \"Rating\"]}}]',7,1),(29,'2020-06-26 15:50:50.973391','1','Question object (1)',2,'[{\"changed\": {\"fields\": [\"Added at\"]}}]',7,1),(30,'2020-06-26 15:51:42.393553','4','Question object (4)',2,'[{\"changed\": {\"fields\": [\"Added at\", \"Rating\"]}}]',7,1),(31,'2020-06-26 16:00:38.787669','21','Question object (21)',1,'[{\"added\": {}}]',7,1);
 /*!40000 ALTER TABLE `django_admin_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -345,7 +345,7 @@ CREATE TABLE `qa_question` (
   PRIMARY KEY (`id`),
   KEY `qa_question_author_id_3665c779_fk_auth_user_id` (`author_id`),
   CONSTRAINT `qa_question_author_id_3665c779_fk_auth_user_id` FOREIGN KEY (`author_id`) REFERENCES `auth_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -354,7 +354,7 @@ CREATE TABLE `qa_question` (
 
 LOCK TABLES `qa_question` WRITE;
 /*!40000 ALTER TABLE `qa_question` DISABLE KEYS */;
-INSERT INTO `qa_question` VALUES (1,'Q0','Question0','2020-06-15',0,1),(2,'Q1','Question1','2020-06-15',0,1),(3,'Q2','Question2','2020-06-15',0,1),(4,'Q3','Question3','2020-06-15',0,1),(5,'Q4','Question4','2020-06-15',0,1),(6,'Q5','Question5','2020-06-15',0,1),(7,'Q6','Question6','2020-06-15',0,1),(8,'Q7','Question7','2020-06-15',0,1),(9,'Q8','Question8','2020-06-15',0,1),(10,'Q9','Question9','2020-06-15',0,1),(11,'Q10','Question10','2020-06-15',0,1),(12,'Q11','Question11','2020-06-15',0,1),(13,'Q12','Question12','2020-06-15',0,1),(14,'Q13','Question13','2020-06-15',0,1),(15,'Q14','Question14','2020-06-15',0,1),(16,'Q15','Question15','2020-06-15',0,1),(17,'Q16','Question16','2020-06-15',0,1),(18,'Q17','Question17','2020-06-15',0,1),(19,'Q18','Question18','2020-06-15',0,1),(20,'Q19','Question19','2020-06-15',0,1);
+INSERT INTO `qa_question` VALUES (1,'Q0','Question0','2020-05-20',0,1),(2,'Q1','Question1','2020-05-19',1,1),(3,'Q2','Question2','2020-05-18',2,1),(4,'Q3','Question3','2020-05-17',3,1),(5,'Q4','Question4','2020-05-16',4,1),(6,'Q5','Question5','2020-05-15',5,1),(7,'Q6','Question6','2020-05-14',6,1),(8,'Q7','Question7','2020-05-13',7,1),(9,'Q8','Question8','2020-05-12',8,1),(10,'Q9','Question9','2020-05-11',9,1),(11,'Q10','Question10','2020-05-10',10,1),(12,'Q11','Question11','2020-05-09',11,1),(13,'Q12','Question12','2020-05-08',12,1),(14,'Q13','Question13','2020-05-07',13,1),(15,'Q14','Question14','2020-05-06',14,1),(16,'Q15','Question15','2020-05-05',15,1),(17,'Q16','Question16','2020-05-04',16,1),(18,'Q17','Question17','2020-05-03',17,1),(19,'Q18','Question18','2020-05-02',18,1),(20,'Q19','Question19','2020-05-01',19,1),(21,'Q20','Question 20','2020-06-26',0,1);
 /*!40000 ALTER TABLE `qa_question` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -395,4 +395,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-26 18:24:52
+-- Dump completed on 2020-06-26 19:46:30

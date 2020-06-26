@@ -53,7 +53,7 @@ class PopularView(View):
 
         paginator = Paginator((Question.objects.popular()), limit)
         # paginator = Paginator(Question.objects.all(), limit)
-        paginator.baseurl = '/?page='
+        paginator.baseurl = '/popular/?page='
         page = paginator.page(page)
 
         return render(request, 'templates/main.html',

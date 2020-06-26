@@ -9,7 +9,7 @@ class QuestionManager(models.Manager):
         return self.order_by('-added_at')
 
     def popular(self):
-        return self.order_by('rating')
+        return self.order_by('-rating')
 
 
 class Question(models.Model):
@@ -17,6 +17,7 @@ class Question(models.Model):
     title = models.CharField(max_length=255)
     text = models.TextField()
     added_at = models.DateField(blank=True, auto_now_add=True)
+    # added_at = models.DateField(blank=True)
     rating = models.IntegerField(default=0)
     author = models.ForeignKey(
         User, on_delete=models.PROTECT, blank=True, default=1)
