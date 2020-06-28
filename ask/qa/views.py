@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.views import View
 from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404
 
+from .forms import AskForm
 from .models import Question, Answer
 
 
@@ -62,3 +63,18 @@ class PopularView(View):
                           'paginator': paginator,
                           'page': page,
                       })
+
+
+class AskView(View):
+    def get(self, request, *args, **kwargs):
+
+        form = AskForm()
+        return render(request, 'templates/ask.html', {'form': form})
+
+    def post(self, request, *args, **kwargs):
+        form = AskForm(request.POST)
+        if form.is_valid():
+            post = form.save()
+            return HttpResponseRedirect(post.get_absolute_url())
+        else:
+            return render(request, 'templates/ask.html', {'form': form})
