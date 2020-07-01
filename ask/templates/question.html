@@ -10,6 +10,11 @@
 
 <p>{{ question.text }}</p>
 
+<form method="post">
+    {{ form.as_ul }}
+    {% csrf_token %}
+    <button type="submit">Submit</button>
+</form>
 {% for answer in answers %}
 <h3>{{ answer.text }}</h3>
     <p>{{ answer.author }}</p>

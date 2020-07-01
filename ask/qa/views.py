@@ -4,7 +4,7 @@ from django.views import View
 from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404
 
-from .forms import AskForm
+from .forms import AskForm, AnswerForm
 from .models import Question, Answer
 
 
@@ -36,9 +36,26 @@ class QuestionView(View):
     def get(self, request, question_number, *args, **kwargs):
         question = get_object_or_404(Question, id=question_number)
         answers = Answer.objects.filter(question=question)
+        form = AnswerForm(question_number=question_number)
         return render(request, 'templates/question.html',
                       {'question': question,
-                       'answers': answers})
+                       'answers': answers,
+                       'form': form})
+
+    def post(self, request, question_number, *args, **kwargs):
+        form = AnswerForm(question_number, request.POST)
+        if form.is_valid():
+
+            question = get_object_or_404(Question, id=form.question_number)
+            form.save()
+            return HttpResponseRedirect(question.get_absolute_url())
+        else:
+            question = get_object_or_404(Question, id=form.question_number)
+            answers = Answer.objects.filter(question=question)
+            return render(request, 'templates/question.html',
+                          {'question': question,
+                           'answers': answers,
+                           'form': form})
 
 
 class PopularView(View):
