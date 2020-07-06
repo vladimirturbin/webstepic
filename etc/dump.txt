@@ -315,7 +315,7 @@ CREATE TABLE `qa_answer` (
   KEY `qa_answer_author_id_fdca825d_fk_auth_user_id` (`author_id`),
   CONSTRAINT `qa_answer_author_id_fdca825d_fk_auth_user_id` FOREIGN KEY (`author_id`) REFERENCES `auth_user` (`id`),
   CONSTRAINT `qa_answer_question_id_afdc507a_fk_qa_question_id` FOREIGN KEY (`question_id`) REFERENCES `qa_question` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -324,7 +324,7 @@ CREATE TABLE `qa_answer` (
 
 LOCK TABLES `qa_answer` WRITE;
 /*!40000 ALTER TABLE `qa_answer` DISABLE KEYS */;
-INSERT INTO `qa_answer` VALUES (1,'Lorem ipsum','2020-06-26 00:00:00.000000',1,1),(2,'Ans','2020-07-01 16:13:58.632275',NULL,23),(3,'Answer 2','2020-07-01 16:14:25.191401',NULL,23);
+INSERT INTO `qa_answer` VALUES (1,'Lorem ipsum','2020-06-26 00:00:00.000000',1,1),(2,'Ans','2020-07-01 16:13:58.632275',NULL,23),(3,'Answer 2','2020-07-01 16:14:25.191401',NULL,23),(4,'Answer 3','2020-07-06 16:37:34.168924',NULL,23);
 /*!40000 ALTER TABLE `qa_answer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -395,4 +395,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-07-01 19:25:17
+-- Dump completed on 2020-07-06 19:38:57

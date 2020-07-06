@@ -36,18 +36,18 @@ class QuestionView(View):
     def get(self, request, question_number, *args, **kwargs):
         question = get_object_or_404(Question, id=question_number)
         answers = Answer.objects.filter(question=question)
-        form = AnswerForm(question_number=question_number)
+        form = AnswerForm()
         return render(request, 'templates/question.html',
                       {'question': question,
                        'answers': answers,
                        'form': form})
 
     def post(self, request, question_number, *args, **kwargs):
-        form = AnswerForm(question_number, request.POST)
+        form = AnswerForm(request.POST)
         if form.is_valid():
 
-            question = get_object_or_404(Question, id=form.question_number)
-            form.save()
+            question = get_object_or_404(Question, id=question_number)
+            form.save(question=question)
             return HttpResponseRedirect(question.get_absolute_url())
         else:
             question = get_object_or_404(Question, id=form.question_number)

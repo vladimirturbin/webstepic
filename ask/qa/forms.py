@@ -28,18 +28,8 @@ class AskForm(forms.Form):
 class AnswerForm(forms.Form):
     text = forms.CharField()
 
-    def __init__(self, question_number, *args, **kwargs):
-        self.question_number = question_number
-        super(AnswerForm, self).__init__(*args, **kwargs)
-
-    def clean_text(self):
-        text = self.cleaned_data['text']
-        return text
-
-    def save(self):
-        self.cleaned_data['question'] = \
-            Question.objects.get(id=self.question_number)
+    def save(self, question):
+        self.cleaned_data['question'] = question
         answer = Answer(**self.cleaned_data)
-        print(answer)
         answer.save()
         return answer
