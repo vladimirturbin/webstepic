@@ -50,7 +50,7 @@ class QuestionView(View):
             form.save(question=question)
             return HttpResponseRedirect(question.get_absolute_url())
         else:
-            question = get_object_or_404(Question, id=form.question_number)
+            question = get_object_or_404(Question, id=question_number)
             answers = Answer.objects.filter(question=question)
             return render(request, 'templates/question.html',
                           {'question': question,
