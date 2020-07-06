@@ -40,7 +40,7 @@ pip3 install --timeout 120 -U pip setuptools
 pip3 install --timeout 120 wheel django gunicorn mysqlclient
 
 #gunicorn --bind=0.0.0.0:8080 --chdir ~/web/ --workers=3 hello:application &
-gunicorn --bind=0.0.0.0:8000 --chdir ~/web/ask/ --workers=3 ask.wsgi &
+gunicorn --bind=0.0.0.0:8000 --chdir ~/web/ask/ --workers=3 ask.wsgi --access-logfile gunicorn.log &
 
 mysql -u root -pok -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('Yg6dGdfZa3K6y3ae');"
 
