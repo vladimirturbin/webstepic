@@ -27,6 +27,7 @@ class AskForm(forms.Form):
 
 class AnswerForm(forms.Form):
     text = forms.CharField()
+    question = forms.IntegerField()
 
     def save(self, question):
         self.cleaned_data['question'] = question
